@@ -1,6 +1,4 @@
-![100]
-
-[![Build Status][1]][2] [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3811/badge)](https://bestpractices.coreinfrastructure.org/projects/3811)
+![100] [![Build Status][1]][2] [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3811/badge)](https://bestpractices.coreinfrastructure.org/projects/3811)
 
 
 ## Overview
@@ -15,6 +13,7 @@ Velero consists of:
 
 * A server that runs on your cluster
 * A command-line client that runs locally
+* A rest style web server that runs locally
 
 ## Documentation
 
