@@ -14,6 +14,7 @@ Velero consists of:
 * A server that runs on your cluster
 * A command-line client that runs locally
 * A rest style web server that runs locally
+* just a test
 
 ## Documentation
 
