@@ -148,8 +148,10 @@ func (o *CreateOptions) BindFromSchedule(flags *pflag.FlagSet) {
 }
 
 func (o *CreateOptions) Validate(c *cobra.Command, args []string, f client.Factory) error {
-	if err := output.ValidateFlags(c); err != nil {
-		return err
+	if c != nil {
+		if err := output.ValidateFlags(c); err != nil {
+			return err
+		}
 	}
 
 	client, err := f.KubebuilderClient()
@@ -192,6 +194,10 @@ func (o *CreateOptions) Complete(args []string, f client.Factory) error {
 	}
 	o.client = client
 	return nil
+}
+
+func (o *CreateOptions) GetClient() veleroclient.Interface {
+	return o.client
 }
 
 func (o *CreateOptions) Run(c *cobra.Command, f client.Factory) error {

@@ -120,6 +120,24 @@ func PrintWithFormat(c *cobra.Command, obj runtime.Object) (bool, error) {
 	return false, errors.Errorf("unsupported output format %q; valid values are 'table', 'json', and 'yaml'", format)
 }
 
+func PrintEncoded(obj runtime.Object, format string) ([]byte, error) {
+	// assume we're printing obj
+	toPrint := obj
+
+	if meta.IsListType(obj) {
+		list, _ := meta.ExtractList(obj)
+		if len(list) == 1 {
+			toPrint = list[0]
+		}
+	}
+
+	encoded, err := encode.Encode(toPrint, format)
+	if err != nil {
+		return nil, err
+	}
+	return encoded, nil
+}
+
 func printEncoded(obj runtime.Object, format string) (bool, error) {
 	// assume we're printing obj
 	toPrint := obj

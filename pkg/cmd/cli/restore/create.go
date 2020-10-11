@@ -157,8 +157,10 @@ func (o *CreateOptions) Validate(c *cobra.Command, args []string, f client.Facto
 		return errors.New("either a backup or schedule must be specified, but not both")
 	}
 
-	if err := output.ValidateFlags(c); err != nil {
-		return err
+	if c != nil {
+		if err := output.ValidateFlags(c); err != nil {
+			return err
+		}
 	}
 
 	if o.client == nil {
@@ -265,10 +267,11 @@ func (o *CreateOptions) Run(c *cobra.Command, f client.Factory) error {
 		},
 	}
 
-	if printed, err := output.PrintWithFormat(c, restore); printed || err != nil {
-		return err
+	if c != nil {
+		if printed, err := output.PrintWithFormat(c, restore); printed || err != nil {
+			return err
+		}
 	}
-
 	var restoreInformer cache.SharedIndexInformer
 	var updates chan *api.Restore
 	if o.Wait {

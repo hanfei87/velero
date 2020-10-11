@@ -34,6 +34,12 @@ If you are ready to jump in and test, add code, or help with documentation, foll
 
 See [the list of releases][6] to find out about feature changes.
 
+## What I have done in this fork
+
+Original version of velero is a server or a CLI client with different arguments. What I have done is add REST interfaces to client so
+we can access the velero service through HTTP interface to client by running client as a REST service. Currently I have only convered
+some basic function such as create, delete, restore, etc. Just get into velero/cmd/velerorest/ and build.
+
 [1]: https://github.com/vmware-tanzu/velero/workflows/Main%20CI/badge.svg
 [2]: https://github.com/vmware-tanzu/velero/actions?query=workflow%3A"Main+CI"
 [4]: https://github.com/vmware-tanzu/velero/issues
